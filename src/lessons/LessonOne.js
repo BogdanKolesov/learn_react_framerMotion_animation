@@ -13,6 +13,23 @@ const LessonOne = () => {
             opacity: 1
         }
     }
+
+
+    const items = [
+        'Text1',
+        'Text2',
+        'Text3'
+    ]
+
+    const listVarians = {
+        visible: i => ({
+            opacity: 1,
+            transition: {
+                delay: i * 0.5
+            }
+        }),
+        hidden: { opacity: 0 }
+    }
     return (
         <>
             <motion.div
@@ -46,6 +63,29 @@ const LessonOne = () => {
             >
                 Some Text
             </motion.p>
+            <motion.a
+                href="#"
+                whileHover={{
+                    fontSize: 20,
+                    color: 'red'
+                }}
+            >
+                Link to some
+            </motion.a>
+            {
+                items.map((item, i) => {
+                    return (
+                        <motion.li
+                            variants={listVarians}
+                            initial='hidden'
+                            animate='visible'
+                            custom={i}
+                            key={i}>
+                            {item}
+                        </motion.li>
+                    )
+                })
+            }
         </>
     )
 }
